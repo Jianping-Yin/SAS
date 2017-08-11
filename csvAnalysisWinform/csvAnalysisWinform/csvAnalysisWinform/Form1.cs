@@ -12,6 +12,7 @@ namespace csvAnalysisWinform
 {
 	public partial class Form1 : Form
 	{
+        public string Filename { get; set; }
 		public Form1()
 		{
 			InitializeComponent();
@@ -31,5 +32,21 @@ namespace csvAnalysisWinform
 		{
 
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = "c:\\";
+            ofd.Filter = "csv files (*.csv)|*.csv";
+            ofd.FilterIndex = 1;
+            ofd.RestoreDirectory = true;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string filename = ofd.FileName;
+                lblFilename.Text = filename;
+            }
+
+         }
+    }
 }
